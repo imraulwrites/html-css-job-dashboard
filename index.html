@@ -1,0 +1,87 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+    <link rel="stylesheet" href="./style.css" />
+    <title>Document</title>
+  </head>
+  <body>
+    <main class="bg-[#F1F2F4] min-h-screen py-15">
+      <div class="container mx-auto">
+        <section class="border-b border-b-[#E6E7E9]">
+          <h1 class="font-bold text-3xl text-[#002C5C] mb-5">Job Application Tracker</h1>
+
+          <div class="grid grid-cols-3 gap-4 mb-8">
+            <div class="bg-[#FFF] p-5 rounded-lg">
+              <h4 class="text-lg font-medium text-[#323B49]">Total</h4>
+              <h3 class="font-bold text-2xl text-[#002C5C]">8</h3>
+            </div>
+            <div class="bg-[#FFF] p-5 rounded-lg">
+              <h4 class="text-lg font-medium text-[#323B49]">Interview</h4>
+              <h3 class="font-bold text-2xl text-[#10B981]">0</h3>
+            </div>
+
+            <div class="bg-[#FFF] p-5 rounded-lg">
+              <h4 class="text-lg font-medium text-[#323B49]">Rejected</h4>
+              <h3 class="font-bold text-2xl text-[#EF4444]">0</h3>
+            </div>
+          </div>
+        </section>
+
+        <section class="my-8">
+          <div class="flex justify-between mb-6">
+            <h3 class="font-bold text-2xl text-[#002C5C]">Available Jobs</h3>
+            <p class="text-base text-[#64748B] font-medium">8 Jobs</p>
+          </div>
+
+          <div class="tabs flex gap-2">
+            <div
+              class="w-20 h-8 flex items-center justify-center bg-[#FFF] text-sm font-medium text-[#64748B] rounded-sm border-2 border-[#F1F2F4]"
+            >
+              All
+            </div>
+            <div
+              class="w-20 h-8 flex items-center justify-center bg-[#FFF] text-sm font-medium text-[#64748B] rounded-sm border-2 border-[#F1F2F4]"
+            >
+              Interview
+            </div>
+            <div
+              class="w-20 h-8 flex items-center justify-center bg-[#FFF] text-sm font-medium text-[#64748B] rounded-sm border-2 border-[#F1F2F4]"
+            >
+              Rejected
+            </div>
+          </div>
+
+          <!-- job list wrapper-->
+          <div class="">
+            <!-- single job -->
+            <div class="job-desc">
+              <h3>Mobile First Corp</h3>
+              <h4>React Native Developer</h4>
+              <ul>
+                <li>Remote</li>
+                <li>Full-time</li>
+                <li>$130,000-$175,000</li>
+              </ul>
+
+              <div>Not Applied</div>
+              <p>
+                Build cross-platform mobile applications using React Native. Work on products used
+                by millions of users worldwide.
+              </p>
+
+              <div>
+                <div>
+                  <button>Interview</button>
+                  <button>Rejected</button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+      </div>
+    </main>
+  </body>
+</html>
