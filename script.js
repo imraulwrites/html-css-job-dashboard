@@ -201,10 +201,7 @@ function showJobs(arr, container) {
 
 function moveToInterview(id) {
   const newInterview = jobsArr.slice(id, id + 1);
-
-  if (interviewArr.some(item => item.id != id)) {
-    interviewArr.push(newInterview);
-  }
+  interviewArr.push(newInterview);
 
   refreshUI();
 }
