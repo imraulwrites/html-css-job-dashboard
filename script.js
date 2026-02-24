@@ -187,6 +187,7 @@ function showJobs(arr, container) {
 
       interviewBtn.addEventListener('click', () => {
         moveToInterview(item.id);
+        console.log(interviewArr);
       });
 
       rejectBtn.addEventListener('click', () => {
@@ -201,14 +202,13 @@ function showJobs(arr, container) {
 
 function moveToInterview(id) {
   const newInterview = jobsArr.slice(id, id + 1);
-  interviewArr.push(newInterview);
-
+  interviewArr.push(...newInterview);
   refreshUI();
 }
 
 function moveToRejected(id) {
   const newRejected = jobsArr.slice(id, id + 1);
-  rejectedArr.push(newRejected);
+  rejectedArr.push(...newRejected);
   refreshUI();
 }
 
