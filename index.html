@@ -4,6 +4,7 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+
     <link rel="stylesheet" href="./style.css" />
     <title>Document</title>
   </head>
@@ -14,16 +15,16 @@
           <h1 class="font-bold text-3xl text-[#002C5C] mb-5">Job Application Tracker</h1>
 
           <div class="grid grid-cols-3 gap-4 mb-8">
-            <div class="bg-[#FFF] p-5 rounded-lg">
+            <div id="totalJobs" class="bg-[#FFF] p-5 rounded-lg">
               <h4 class="text-lg font-medium text-[#323B49]">Total</h4>
               <h3 class="font-bold text-2xl text-[#002C5C]">8</h3>
             </div>
-            <div class="bg-[#FFF] p-5 rounded-lg">
+            <div id="totalInterview" class="bg-[#FFF] p-5 rounded-lg">
               <h4 class="text-lg font-medium text-[#323B49]">Interview</h4>
               <h3 class="font-bold text-2xl text-[#10B981]">0</h3>
             </div>
 
-            <div class="bg-[#FFF] p-5 rounded-lg">
+            <div id="totalRejected" class="bg-[#FFF] p-5 rounded-lg">
               <h4 class="text-lg font-medium text-[#323B49]">Rejected</h4>
               <h3 class="font-bold text-2xl text-[#EF4444]">0</h3>
             </div>
@@ -31,31 +32,37 @@
         </section>
 
         <section class="my-8">
-          <div class="flex justify-between mb-6">
+          <div id="available-jobs" class="flex justify-between mb-6">
             <h3 class="font-bold text-2xl text-[#002C5C]">Available Jobs</h3>
             <p class="text-base text-[#64748B] font-medium">8 Jobs</p>
           </div>
 
+          <!-- tabs section start -->
           <div class="tabs flex gap-2">
             <div
+              id="all"
               class="w-20 h-8 flex items-center justify-center bg-[#FFF] text-sm font-medium text-[#64748B] rounded-sm border-2 border-[#F1F2F4]"
             >
               All
             </div>
             <div
+              id="interview"
               class="w-20 h-8 flex items-center justify-center bg-[#FFF] text-sm font-medium text-[#64748B] rounded-sm border-2 border-[#F1F2F4]"
             >
               Interview
             </div>
             <div
+              id="reject"
               class="w-20 h-8 flex items-center justify-center bg-[#FFF] text-sm font-medium text-[#64748B] rounded-sm border-2 border-[#F1F2F4]"
             >
               Rejected
             </div>
           </div>
 
+          <!-- End tabs section  -->
+
           <!-- job list wrapper-->
-          <div class="">
+          <div id="all-job-list" class="">
             <!-- single job -->
             <div class="job-desc">
               <h3>Mobile First Corp</h3>
@@ -80,8 +87,21 @@
               </div>
             </div>
           </div>
+
+          <!-- interview list start -->
+          <div id="interview-list" class="hidden">
+            <!-- single job -->
+          </div>
+          <!-- end interview list -->
+
+          <!-- rejected list start -->
+          <div id="rejected-list" class="hidden">
+            <!-- single job -->
+          </div>
+          <!-- end rejected list -->
         </section>
       </div>
     </main>
+    <script src="./script.js"></script>
   </body>
 </html>
