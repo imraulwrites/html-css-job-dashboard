@@ -11,7 +11,7 @@
   <body>
     <main class="bg-[#F1F2F4] min-h-screen py-15">
       <div class="container mx-auto">
-        <section class="border-b border-b-[#E6E7E9]">
+        <section class="border-b border-b-[#E6E7E9] sticky top-0 z-10 bg-white/10 backdrop-blur-md">
           <h1 class="font-bold text-3xl text-[#002C5C] mb-5">Job Application Tracker</h1>
 
           <div class="grid grid-cols-3 gap-4 mb-8">
@@ -39,24 +39,24 @@
 
           <!-- tabs section start -->
           <div class="tabs flex gap-2">
-            <div
+            <button
               id="all"
-              class="w-20 h-8 flex items-center justify-center bg-[#FFF] text-sm font-medium text-[#64748B] rounded-sm border-2 border-[#F1F2F4]"
+              class="w-20 h-8 flex items-center justify-center bg-[#FFF] text-sm font-medium text-[#64748B] rounded-sm border-2 border-[#F1F2F4] focus:bg-blue-500 focus:text-white "
             >
               All
-            </div>
-            <div
+            </button>
+            <button
               id="interview"
-              class="w-20 h-8 flex items-center justify-center bg-[#FFF] text-sm font-medium text-[#64748B] rounded-sm border-2 border-[#F1F2F4]"
+              class="w-20 h-8 flex items-center justify-center bg-[#FFF] text-sm font-medium text-[#64748B] rounded-sm border-2 border-[#F1F2F4] focus:bg-blue-500 focus:text-white"
             >
               Interview
-            </div>
-            <div
+            </button>
+            <button
               id="reject"
-              class="w-20 h-8 flex items-center justify-center bg-[#FFF] text-sm font-medium text-[#64748B] rounded-sm border-2 border-[#F1F2F4]"
+              class="w-20 h-8 flex items-center justify-center bg-[#FFF] text-sm font-medium text-[#64748B] rounded-sm border-2 border-[#F1F2F4] focus:bg-blue-500 focus:text-white"
             >
               Rejected
-            </div>
+            </button>
           </div>
 
           <!-- End tabs section  -->
