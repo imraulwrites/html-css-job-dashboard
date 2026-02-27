@@ -71,7 +71,6 @@ const jobsArr = [
     salary: '$118,000',
     description: 'Work on music streaming backend services.',
   },
-  // Additional 4 simple cards
   {
     id: 9,
     companyName: 'Stripe',
@@ -82,8 +81,6 @@ const jobsArr = [
     description: 'Work on new payment method in backend services.',
   },
 ];
-
-// console.log('first');
 
 const interviewArr = [];
 
@@ -166,8 +163,10 @@ function showJobs(arr, container) {
                 <li>${item.salary}</li>
               </ul>
 
-              <div class="my-2"> <button class="px-3 py-1.5  bg-[#EEF4FF] rounded-md uppercase font-medium"
-              >Not Applied</div>
+              <div class="my-2"> 
+                <button class="status px-3 py-1.5 bg-[#EEF4FF] rounded-md uppercase font-medium"
+                >Not Applied</button>
+              </div>
               <p class="my-2">${item.description}
               </p>
 
@@ -181,6 +180,7 @@ function showJobs(arr, container) {
       const interviewBtn = singleJob.querySelector('.interview-btn');
       const rejectBtn = singleJob.querySelector('.reject-btn');
       const deleteBtn = singleJob.querySelector('.delete-btn');
+      const statusBtn = singleJob.querySelector('.status');
 
       interviewBtn.addEventListener('click', () => {
         moveToInterview(item.id);
@@ -193,6 +193,9 @@ function showJobs(arr, container) {
       deleteBtn.addEventListener('click', () => {
         deleteJob(item.id);
       });
+
+      const updatedStatus = showStatus(item.id);
+      statusBtn.innerHTML = updatedStatus;
 
       container.appendChild(singleJob);
     });
@@ -258,6 +261,16 @@ function deleteJob(id) {
   rejectedArr.push(...newRejectedArr);
 
   refreshUI();
+}
+
+function showStatus(id) {
+  if (rejectedArr.find(item => item.id === id)) {
+    return 'Rejected';
+  } else if (interviewArr.find(item => item.id === id)) {
+    return 'Interview';
+  } else {
+    return 'Not Applied';
+  }
 }
 
 function refreshUI() {
