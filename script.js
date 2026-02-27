@@ -102,9 +102,6 @@ const reject = document.getElementById('reject');
 const listWrapper = document.querySelectorAll('.single-job');
 const tabs = document.querySelectorAll('.tabs button');
 
-console.log(listWrapper);
-// console.log(tabs);
-
 tabs.forEach(tab =>
   tab.addEventListener('click', () => {
     tabs.forEach(item => {
