@@ -91,13 +91,6 @@ const interview = document.querySelector('#totalInterview h3');
 const rejected = document.querySelector('#totalRejected h3');
 const availableJobs = document.querySelector('#available-jobs p');
 
-function updateCounts() {
-  jobs.innerHTML = jobsArr.length;
-  interview.innerHTML = interviewArr.length;
-  rejected.innerHTML = rejectedArr.length;
-  availableJobs.innerHTML = jobsArr.length + ' jobs';
-}
-
 const allJobList = document.getElementById('all-job-list');
 const interviewList = document.getElementById('interview-list');
 const rejectedList = document.getElementById('rejected-list');
@@ -110,21 +103,24 @@ all.addEventListener('click', () => {
   allJobList.classList.remove('hidden');
   interviewList.classList.add('hidden');
   rejectedList.classList.add('hidden');
+  updateCounts('all');
 });
 
 interviewBtn.addEventListener('click', () => {
   allJobList.classList.add('hidden');
   interviewList.classList.remove('hidden');
   rejectedList.classList.add('hidden');
+  updateCounts('interview');
 });
 
 reject.addEventListener('click', () => {
   allJobList.classList.add('hidden');
   interviewList.classList.add('hidden');
   rejectedList.classList.remove('hidden');
+  updateCounts('reject');
 });
 
-function showJobs(arr, container) {
+function showJobs(arr, container, type) {
   container.innerHTML = '';
   if (arr.length > 0) {
     arr.forEach(item => {
@@ -183,15 +179,15 @@ function showJobs(arr, container) {
       const statusBtn = singleJob.querySelector('.status');
 
       interviewBtn.addEventListener('click', () => {
-        moveToInterview(item.id);
+        moveToInterview(item.id, type);
       });
 
       rejectBtn.addEventListener('click', () => {
-        moveToRejected(item.id);
+        moveToRejected(item.id, type);
       });
 
       deleteBtn.addEventListener('click', () => {
-        deleteJob(item.id);
+        deleteJob(item.id, type);
       });
 
       const updatedStatus = showStatus(item.id);
@@ -214,9 +210,11 @@ function showJobs(arr, container) {
 
     container.appendChild(noJobsCard);
   }
+
+  updateCounts(type);
 }
 
-function moveToInterview(id) {
+function moveToInterview(id, type) {
   if (!interviewArr.find(item => item.id === id)) {
     const newInterview = jobsArr.find(item => item.id === id);
 
@@ -228,10 +226,10 @@ function moveToInterview(id) {
   rejectedArr.length = 0;
   rejectedArr.push(...updatedRejectArr);
 
-  refreshUI();
+  refreshUI(type);
 }
 
-function moveToRejected(id) {
+function moveToRejected(id, type) {
   if (!rejectedArr.find(item => item.id === id)) {
     const newRejected = jobsArr.find(item => item.id === id);
 
@@ -244,10 +242,10 @@ function moveToRejected(id) {
 
   interviewArr.push(...updatedInterviewArr);
 
-  refreshUI();
+  refreshUI(type);
 }
 
-function deleteJob(id) {
+function deleteJob(id, type) {
   const newJobArr = jobsArr.filter(item => item.id !== id);
   jobsArr.length = 0;
   jobsArr.push(...newJobArr);
@@ -260,7 +258,7 @@ function deleteJob(id) {
   rejectedArr.length = 0;
   rejectedArr.push(...newRejectedArr);
 
-  refreshUI();
+  refreshUI(type);
 }
 
 function showStatus(id) {
@@ -273,11 +271,28 @@ function showStatus(id) {
   }
 }
 
-function refreshUI() {
+function updateCounts(type = 'all') {
+  let jobText = jobsArr.length + ' jobs';
+
+  if (type === 'interview') {
+    jobText = interviewArr.length + ' of ' + jobText;
+  }
+
+  if (type === 'reject') {
+    jobText = rejectedArr.length + ' of ' + jobText;
+  }
+
+  jobs.innerHTML = jobsArr.length;
+  interview.innerHTML = interviewArr.length;
+  rejected.innerHTML = rejectedArr.length;
+  availableJobs.innerHTML = jobText;
+}
+
+function refreshUI(type = 'all') {
   showJobs(jobsArr, allJobList, 'all');
   showJobs(interviewArr, interviewList, 'interview');
   showJobs(rejectedArr, rejectedList, 'reject');
-  updateCounts();
+  updateCounts(type);
 }
 
 refreshUI();
