@@ -98,7 +98,7 @@ function updateCounts() {
   jobs.innerHTML = jobsArr.length;
   interview.innerHTML = interviewArr.length;
   rejected.innerHTML = rejectedArr.length;
-  availableJobs.innerHTML = jobsArr.length;
+  availableJobs.innerHTML = jobsArr.length + ' jobs';
 }
 
 const allJobList = document.getElementById('all-job-list');
