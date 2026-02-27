@@ -99,26 +99,39 @@ const all = document.getElementById('all');
 const interviewBtn = document.getElementById('interview');
 const reject = document.getElementById('reject');
 
-all.addEventListener('click', () => {
-  allJobList.classList.remove('hidden');
-  interviewList.classList.add('hidden');
-  rejectedList.classList.add('hidden');
-  updateCounts('all');
-});
+const listWrapper = document.querySelectorAll('.single-job');
+const tabs = document.querySelectorAll('.tabs button');
 
-interviewBtn.addEventListener('click', () => {
-  allJobList.classList.add('hidden');
-  interviewList.classList.remove('hidden');
-  rejectedList.classList.add('hidden');
-  updateCounts('interview');
-});
+console.log(listWrapper);
+// console.log(tabs);
 
-reject.addEventListener('click', () => {
-  allJobList.classList.add('hidden');
-  interviewList.classList.add('hidden');
-  rejectedList.classList.remove('hidden');
-  updateCounts('reject');
-});
+tabs.forEach(tab =>
+  tab.addEventListener('click', () => {
+    tabs.forEach(item => {
+      item.classList.remove('bg-blue-500', 'text-white');
+      item.classList.add('bg-white', 'text-[#64748B]');
+    });
+
+    tab.classList.remove('bg-white', 'text-[#64748B]');
+    tab.classList.add('bg-blue-500', 'text-white');
+
+    listWrapper.forEach(item => {
+      item.classList.add('hidden');
+    });
+
+    if (tab.id === 'all') {
+      allJobList.classList.remove('hidden');
+    }
+    if (tab.id === 'interview') {
+      interviewList.classList.remove('hidden');
+    }
+    if (tab.id === 'reject') {
+      rejectedList.classList.remove('hidden');
+    }
+
+    updateCounts(tab.id);
+  })
+);
 
 function showJobs(arr, container, type) {
   container.innerHTML = '';
